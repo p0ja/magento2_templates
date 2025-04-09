@@ -1,0 +1,7 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="vendor_cache_cleaners">
+        <job name="vendor_cacheclean_by_tags_cron" instance="Vendor\CacheClearByTags\Cron\ClearCache5minTags" method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+    </group>
+</config>
