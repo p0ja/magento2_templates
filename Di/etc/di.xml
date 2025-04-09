@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="vendorDi" xsi:type="object">Vendor\Di\Console\Command\DiTestCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Playground -->
+
+    <type name="Vendor\Di\Console\Command\DiTestCommand">
+        <arguments>
+            <argument name="arg1" xsi:type="object">Vendor\Di\Model\User</argument>
+            <argument name="arg2" xsi:type="object">vendorVirtualType</argument>
+        </arguments>
+    </type>
+    
+    <virtualType name="vendorVirtualType" type="Vendor\Di\Model\Image">
+        <arguments>
+            <argument name="vtArg1" xsi:type="string">vtVal1</argument>
+            <argument name="vtArg2" xsi:type="string">vtVal2</argument>
+        </arguments>
+    </virtualType>
+
+</config>
