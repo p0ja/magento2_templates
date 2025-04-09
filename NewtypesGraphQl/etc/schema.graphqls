@@ -1,0 +1,34 @@
+interface NewtypeInterface  @typeResolver(class: "Vendor\\NewtypeGraphQl\\Model\\NewtypeTypeResolver") @doc(description:"Contains information about newtypes.") {
+    name: String! @doc(description: "The name of the newtype")
+    content: String! @doc(description: "The content of the newtype")
+    date_from: String! @doc (description: "Start date")
+    date_to: String! @doc (description: "End date")
+    url: String @doc(description: "The part of the URL that newtype links to")
+}
+
+type Newtype implements NewtypeInterface @doc(description: "Contains the list of newtypes.") {
+    priority: String! @doc(description: "The content of the newtype") @resolver(class: "Vendor\\NewtypesGraphQl\\Model\\Resolver\\PriorityResolver")
+    category: [CategoryData] @doc(description: "The stock availability of the products.") @resolver(class: "Vendor\\NewtypesGraphQl\\Model\\Resolver\\CategoryResolver")
+}
+
+type CategoryData {
+    uid: String
+    name: String
+    description: String
+    path: String
+}
+
+type Query {
+    getNewtypes(
+        input: NewtypeInput! @doc(description: "An input object that defines shopper information.")
+    ): NewtypeOutput @doc(description: "Returns newtypes data information.")  @resolver(class: "Vendor\\NewtypesGraphQl\\Model\\Resolver\\NewtypeOutput")
+}
+
+input NewtypeInput {
+    store_id: FilterEqualTypeInput @doc(description: "Filter by store id.")
+    date: String! @doc(description: "Date for newtype to display.")
+}
+
+type NewtypeOutput {
+    newtypes: [Newtype] @doc(description: "Newtype details.")
+}
