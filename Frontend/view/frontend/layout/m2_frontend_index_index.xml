@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!-- <head>
+        <css src="M2_Frontend::test.css"/>
+        <link src="M2_Frontend::test.js"/>
+    </head> -->
+    <referenceBlock name="head.additional">
+        <block  template="head.phtml"
+                class="M2\Frontend\Block\Head"
+                name="m2_frontend_block_head" />
+    </referenceBlock>
+
+    <referenceContainer name="content">
+        <block template="content.phtml"
+               class="M2\Frontend\Block\Main"
+               name="m2_frontend_block_main" />
+    </referenceContainer>
+</page>
