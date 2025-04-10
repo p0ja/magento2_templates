@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="M2_MVVM::things"
+             resource="M2_MVVM::things"
+             title="MVVM things"
+             action="m2_mvvm_things/index/index"
+             module="M2_MVVM"
+             sortOrder="10"
+        />
+        <add id="M2_MVVM::things_list"
+             resource="M2_MVVM::things"
+             title="Thing Objects"
+             action="m2_mvvm_things/index/index"
+             module="M2_MVVM"
+             sortOrder="10"
+             parent="M2_MVVM::things"
+             dependsOnModule="M2_MVVM"
+        />
+    </menu>
+</config>
